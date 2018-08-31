@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+  font-family: 'Comic Sans MS';
+}
+
+h3, h2 {
+  font-family: 'Comic Sans MS' !important;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: white;
+  color: black;
+}
+
+.subjects {
+  font-size: 21px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.subjects > span {
+  cursor: pointer;
+}
+
+.all > span {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.book > span {
+  cursor: pointer;
+}
+
+.ui.secondary.pointing.menu .item:hover {
+  color: gray !important;
+  font-size: 18px;
+}
+
+.ui.secondary.pointing.menu .item {
+  font-size: 18px;
+}
+
+.ui.secondary.pointing.menu .active.item {
+  font-size: 18px;
+  color: black !important;
+}
+
+.ui.secondary.pointing.menu .active.item:hover {
+  font-size: 18px;
+}
+
+.title {
+  font-size: 27px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.subjects > span:hover {
+  color: grey;
+}
+.book > span:hover {
+  color: grey;
+}
+.all > span:hover {
+  color: grey;
+}
+
+.text {
+  font-size: large;
+  text-align: center;
+}
+
+.book {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 21px;
+}
+
+.ui.dropdown .menu>.item {
+  display: flex;
+  justify-content: center;
+}
+
+.ui.menu {
+  font-family: 'Comic Sans MS';
+}
+
+.ui.button {
+  font-family: 'Comic Sans MS';
+}
+
+.ui.header {
+  font-family: 'Comic Sans MS';
+}

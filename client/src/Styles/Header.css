@@ -1,0 +1,23 @@
+.navigation {
+  background-color: black;
+  color: white;
+  height: 50px;
+  font-size: 30px;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-title {
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.ui.dropdown {
+  width: 0px;
+}
+
+.ui.dropdown .menu {
+  width: 100px;
+}

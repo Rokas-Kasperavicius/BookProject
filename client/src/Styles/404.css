@@ -1,0 +1,13 @@
+.not-found {
+  display: flex;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  align-items: center;
+  justify-content: center;
+
+  font-size: large;
+  font-weight: bold;
+}

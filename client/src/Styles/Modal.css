@@ -1,0 +1,9 @@
+.ui.modal>.content {
+  display: flex;
+  justify-content: center;
+}
+
+.ui.modal>.header {
+  display: flex;
+  justify-content: center;
+}
