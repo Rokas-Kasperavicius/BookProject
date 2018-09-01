@@ -85,7 +85,7 @@ class Register extends React.Component {
     return (
       <div className="app">
         <h2 className="title">
-          Register to Books Library
+          Register to the Library Of Books
         </h2>
         <Form className="form guest-form" onSubmit={e => this.onSubmit(e)}>
           <Field
