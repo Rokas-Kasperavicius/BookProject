@@ -8,8 +8,8 @@ import { renderField }from './Input';
 import { required } from './Validation'
 import { sendUser, clear } from '../Actions/Actions';
 import { login } from '../API/API';
-import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 class Login extends React.Component {
   onSubmit = e => {
@@ -36,11 +36,11 @@ class Login extends React.Component {
     const { formErrors } = this.props;
 
     return (
-      <div className="guest">
-        <h2 className="login-title title">
+      <div className="app">
+        <h2 className="title">
           Login to Books Library
         </h2>
-        <Form className="bookForm loginForm" onSubmit={e => this.onSubmit(e)}>
+        <Form className="form guest-form" onSubmit={e => this.onSubmit(e)}>
           <Field
             name="email"
             label="Email"

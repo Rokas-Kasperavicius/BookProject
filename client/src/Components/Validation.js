@@ -15,7 +15,7 @@ export const email = value => {
 };
 
 export const maxValue = value => {
-  if(value && value.length > 20){
+  if (value && value.length > 20) {
     return 'User name must be 20 or less characters long';
   }
   return undefined;

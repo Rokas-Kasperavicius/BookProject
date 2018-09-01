@@ -8,7 +8,7 @@ class BookList extends React.Component{
     }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     const { filtered } = this.props;
     this.setState({
       books: filtered,
@@ -25,7 +25,7 @@ render(){
  const { books } = this.state;
 
  return(
-   <ol className="books-list">
+   <ol className="book-list">
      {
        books.map(filter => {
          return <li className="book" key={filter.id}>

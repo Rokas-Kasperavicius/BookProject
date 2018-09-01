@@ -90,9 +90,9 @@ class AccountSettings extends React.Component {
     console.log(this.props.formValues);
 
     return (
-      <div className="App">
+      <div className="app">
         <h3 className="title">Account Settings</h3>
-        <Form className="bookForm account-settingsForm" onSubmit={e => e.preventDefault()}>
+        <Form className="form account-settings-form" onSubmit={e => e.preventDefault()}>
           <Field
             name="firstName"
             label="First Name"

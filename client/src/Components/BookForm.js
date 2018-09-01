@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Form } from 'semantic-ui-react'
 import Modals from './Modals'
+import { Button, Form } from 'semantic-ui-react'
 
 class BookForm extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class BookForm extends React.Component {
       title: '',
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     const { book } = this.props;
 
     this.setState({
@@ -67,15 +67,11 @@ class BookForm extends React.Component {
     this.props.changeBook(values);
   };
 
-  onModalClose = () => {
-    this.setState({
-      open: false,
-    })
-  };
+  onModal = () => {
+    const { open } = this.state;
 
-  onModalOpen = () => {
     this.setState({
-      open: true,
+      open: !open,
     })
   };
 
@@ -83,9 +79,9 @@ class BookForm extends React.Component {
     const { values, open } = this.state;
 
     return (
-      <div className="bookFormPage">
+      <div>
         <div>
-          <Form className="bookForm">
+          <Form className="form">
             <div>
                <label className="label">
                  Title:
@@ -164,13 +160,13 @@ class BookForm extends React.Component {
             </div>
          </Form>
         </div>
-        <div className="buttonsForm">
-          <Button content="Submit" className="submit bookform-buttons" onClick={() => this.onSubmit()} />
-          <Button content="Reset" className="reset bookform-buttons" onClick={() => this.onModalOpen()} />
+        <div className="buttons-form">
+          <Button content="Submit" className="submit form-buttons" onClick={() => this.onSubmit()} />
+          <Button content="Reset" className="reset form-buttons" onClick={() => this.onModal()} />
         </div>
         <Modals
           open={open}
-          onModalClose={this.onModalClose}
+          onModal={this.onModal}
           onReset={this.onReset}
           title={'Are you sure you want to reset the book?'}
         >

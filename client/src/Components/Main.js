@@ -1,7 +1,7 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react'
 import BookForm from './BookForm';
-import BookList from './BookList'
+import BookList from './BookList';
+import { Header } from 'semantic-ui-react';
 import { booksApi, booksApiPost, subjectsApi } from '../API/API';
 import { connect } from 'react-redux';
 
@@ -49,6 +49,7 @@ class Main extends React.Component {
 
   openBook = (book) => {
     const filtered = this.filterBook(book);
+    console.log(filtered);
 
     this.setState({ bookOpened: true, initialBook: filtered });
   };
@@ -95,16 +96,16 @@ class Main extends React.Component {
     const { subjects, filtered, initialBook, bookOpened } = this.state;
 
     return (
-      <div className="App">
-        <Header className="App-header">
+      <div className="app">
+        <Header>
           <h3 className="title">Choose your favourite subject!</h3>
-          <div className="all">
+          <div className="subject-title">
             <span onClick={() => this.handleSubjectReset()}>All Subjects:</span>
           </div>
-          <div className="subjects">
+          <div className="subject">
             <span onClick={() => this.handleSubjectClick(subjects[0].name)}>{subjects[0] && subjects[0].name}</span>
           </div>
-          <div className="subjects">
+          <div className="subject">
             <span onClick={() => this.handleSubjectClick(subjects[1].name)}>{subjects[1] && subjects[1].name}</span>
           </div>
         </Header>

@@ -7,9 +7,9 @@ import { renderField } from './Input';
 import { removeToken } from './Token';
 import { required, phone, email, maxValue } from './Validation'
 import { register } from '../API/API';
-import 'react-notifications/lib/notifications.css';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { clear } from "../Actions/Actions";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 class Register extends React.Component {
   constructor(props){
@@ -82,11 +82,11 @@ class Register extends React.Component {
     const validation = uppercase && lowercase && characters && digits;
 
     return (
-      <div className="guest">
-        <h2 className="login-title title">
+      <div className="app">
+        <h2 className="title">
           Register to Books Library
         </h2>
-        <Form className="bookForm loginForm" onSubmit={e => this.onSubmit(e)}>
+        <Form className="form guest-form" onSubmit={e => this.onSubmit(e)}>
           <Field
             name="firstName"
             label="First Name"

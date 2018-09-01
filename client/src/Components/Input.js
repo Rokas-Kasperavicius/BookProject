@@ -19,7 +19,7 @@ export const renderField = (
         type={type}
         className="text"
         autoComplete={autoComplete}
-        style={{ width: '100%', textAlignLast: 'center' }}
+        style={{ width: "100%", textAlignLast: "center" }}
       />
       {touched && ((error && <span className="error">{error}</span>) || (warning && <span className="error">{warning}</span>))}
     </div>

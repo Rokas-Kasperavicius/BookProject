@@ -1,0 +1,30 @@
+.ui.secondary.pointing.menu .item {
+  font-size: 18px;
+}
+
+.ui.secondary.pointing.menu .item:hover {
+  color: gray !important;
+}
+
+.ui.secondary.pointing.menu .active.item {
+  color: black !important;
+}
+
+.ui.menu {
+  font-family: 'Comic Sans MS';
+}
+
+.ui.button {
+  color: black;
+  font-family: 'Comic Sans MS';
+}
+
+.ui.modal > .content {
+  display: flex;
+  justify-content: center;
+}
+
+.ui.modal > .header {
+  display: flex;
+  justify-content: center;
+}

@@ -38,7 +38,7 @@
   background-color: red !important;
 }
 
-.bookform-buttons {
+.form-buttons {
   font-size: 20px;
   cursor: pointer;
   color: black;
@@ -48,23 +48,23 @@
   justify-content: center;
 }
 
-.loginForm {
+.guest-form {
   text-align: center;
   margin-top: 100px !important;
   font-size: 17px;
 }
 
-.bookForm {
+.form {
   margin: auto;
   width: 50%;
   min-width: 320px;
 }
 
-.account-settingsForm {
+.account-settings-form {
   margin-top: 50px !important;
 }
 
-.buttonsForm {
+.buttons-form {
   display: inline-block;
 }
 
@@ -80,7 +80,7 @@
   justify-content: center;
 }
 
-.books-list {
+.book-list {
   padding-left: unset;
 }
 
