@@ -12,6 +12,9 @@ const subjects = require('./client/src/Data/Subjects.json');
 
 let app = express();
 
+let indexRouter = require('./routes/index');
+let userRouter = require('./routes/users');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -34,83 +37,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.resolve(__dirname, './client/build')));
 
-app.get('*', (request, response) => {
-  response.sendFile(path.join(__dirname, './client/build', 'index.html'));
-});
-
-app.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-app.get('/api/books', (req, res) => {
-  res.json(books);
-});
-
-app.get('/api/users', (req, res) => {
-  res.json(users);
-});
-
-app.get('/api/subjects', (req, res) => {
-  res.json(subjects);
-});
-
-app.post('/api/books', (req, res) => {
-  fs.writeFile('./client/src/Data/BookData.json', JSON.stringify(req.body),'utf-8', (err) => {
-    if (err) throw err;
-  });
-
-  res.end('Success');
-});
-
-app.post('/login', (req, res, next) => {
-  fs.readFile('./client/src/Data/Users.json', 'utf-8', (err, data) => {
-    if (err) throw err;
-
-    let users = JSON.parse(data);
-    let newLogin = req.body;
-    let loggedUser = {};
-    let errors = '';
-    const user = users.filter(user => user.email === newLogin.email);
-
-    if (user.length === 0 || (user.length > 0 && user[0].password !== newLogin.password)) {
-      errors = 'Email address or password was invalid';
-    } else {
-      loggedUser = user[0];
-    }
-    res.json({ errors, loggedUser });
-  });
-});
-
-app.post('/register', (req, res) => {
-  fs.readFile('./client/src/Data/Users.json', 'utf-8', (err, data) => {
-    if (err) throw err;
-
-    let users = JSON.parse(data);
-    let newRegister = req.body;
-
-    let errors = [];
-
-    for (let i = 0; i < users.length; i++) { //Check if username is unique
-      if (users[i].userName === newRegister.userName) {
-        errors.push('User name must be unique!');
-      }
-      if (users[i].email === newRegister.email) {
-        errors.push('Email address must be unique!');
-      }
-    }
-
-    if (errors.length === 0) {
-      newRegister = { id: users.length + 1, ...newRegister };
-      users.push(newRegister);
-
-      fs.writeFile('./client/src/Data/Users.json', JSON.stringify(users),'utf-8', (err) => {
-        if (err) throw err;
-      });
-    }
-
-    res.json(errors);
-  });
-});
+app.use('/api', indexRouter);
+app.use('/', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
