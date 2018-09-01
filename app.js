@@ -18,8 +18,7 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
 
 //CORS bypass
 app.use(function(req, res, next) {
@@ -34,6 +33,10 @@ app.use(function(req, res, next) {
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.resolve(__dirname, './client/build')));
+
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, './client/build', 'index.html'));
+});
 
 app.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
