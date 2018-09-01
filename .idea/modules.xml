@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/react-express-heroku-app.iml" filepath="$PROJECT_DIR$/.idea/react-express-heroku-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/BookProject.iml" filepath="$PROJECT_DIR$/.idea/BookProject.iml" />
     </modules>
   </component>
 </project>
