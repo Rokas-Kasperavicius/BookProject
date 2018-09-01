@@ -47,7 +47,6 @@ class Main extends React.Component {
 
   openBook = (book) => {
     const filtered = this.filterBook(book);
-    console.log(filtered);
 
     this.setState({ bookOpened: true, initialBook: filtered });
   };
