@@ -40,6 +40,7 @@ app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use('/api', indexRouter);
 app.use('/', userRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
 const users = require('../client/src/Data/Users.json');
 const books = require('../client/src/Data/BookData.json');

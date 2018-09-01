@@ -1,17 +1,13 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
 const fs = require('fs');
 
-router.get('*', (request, response, next) => {
-  // if (request.url !== '/api/books') {
+router.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  //} else {
-  //  next();
-  // }
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res) => {
   fs.readFile('./client/src/Data/Users.json', 'utf-8', (err, data) => {
     if (err) throw err;
 
