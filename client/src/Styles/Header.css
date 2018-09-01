@@ -13,11 +13,3 @@
   margin: auto;
   margin-bottom: 20px;
 }
-
-.ui.dropdown {
-  width: 0px;
-}
-
-.ui.dropdown .menu {
-  width: 100px;
-}

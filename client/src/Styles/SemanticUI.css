@@ -28,3 +28,11 @@
   display: flex;
   justify-content: center;
 }
+
+.ui.dropdown {
+  width: 0px;
+}
+
+.ui.dropdown .menu {
+  width: 100px;
+}

@@ -1,0 +1,18 @@
+.notification {
+    background-color: #bc0000;
+    font-weight: bold;
+    opacity: 1;
+    padding-right: 50px;
+}
+
+.notification-success:before {
+    display: none;
+}
+
+.notification-error:before {
+    display: none;
+}
+
+.notification-container {
+    width: 70%;
+}

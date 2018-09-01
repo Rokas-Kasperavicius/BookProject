@@ -15,8 +15,6 @@ class Main extends React.Component {
       filtered: [],
       bookOpened: false,
       initialBook: undefined,
-
-      customers: [],
     };
   }
 

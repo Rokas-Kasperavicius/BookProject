@@ -1,10 +1,10 @@
 .not-found {
   display: flex;
   position: absolute;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
+  top: unset;
+  right: unset;
+  left: unset;
+  bottom: unset;
   align-items: center;
   justify-content: center;
   font-size: large;

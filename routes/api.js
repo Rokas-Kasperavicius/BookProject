@@ -1,6 +1,5 @@
 let express = require('express');
 let router = express.Router();
-let path = require('path');
 
 const users = require('../client/src/Data/Users.json');
 const books = require('../client/src/Data/BookData.json');

@@ -38,7 +38,7 @@ class Login extends React.Component {
     return (
       <div className="app">
         <h2 className="title">
-          Login to Books Library
+          Login to the Library Of Books
         </h2>
         <Form className="form guest-form" onSubmit={e => this.onSubmit(e)}>
           <Field

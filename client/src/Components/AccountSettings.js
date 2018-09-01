@@ -1,11 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Icon } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import { Field, reduxForm, getFormValues, getFormSyncErrors, Form } from 'redux-form'
 import { required, phone, email, maxValue } from './Validation'
 import { renderField }from './Input';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
+import { PasswordValidation } from "./PasswordValidation";
+import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 class AccountSettings extends React.Component {
@@ -87,7 +88,6 @@ class AccountSettings extends React.Component {
     const { formErrors } = this.props;
     const { uppercase, lowercase, characters, digits } = this.state;
     const validation = uppercase && lowercase && characters && digits;
-    console.log(this.props.formValues);
 
     return (
       <div className="app">
@@ -150,22 +150,12 @@ class AccountSettings extends React.Component {
             type="password"
             autoComplete="new-password"
           />
-          <div className="password-require">
-            <Icon name={characters ? "check circle" : "warning circle"} style={{ color: characters ? "green" : "red" }} />
-            <span>At least 8 characters long</span>
-          </div>
-          <div className="password-require">
-            <Icon name={lowercase ? "check circle" : "warning circle"} style={{ color: lowercase ? "green" : "red" }} />
-            <span>One lowercase character</span>
-          </div>
-          <div className="password-require">
-            <Icon name={uppercase ? "check circle" : "warning circle"} style={{ color: uppercase ? "green" : "red" }} />
-            <span>One uppercase character</span>
-          </div>
-          <div className="password-require">
-            <Icon name={digits ? "check circle" : "warning circle"} style={{ color: digits ? "green" : "red" }} />
-            <span>At least one number</span>
-          </div>
+          <PasswordValidation
+            characters={characters}
+            lowercase={lowercase}
+            uppercase={uppercase}
+            digits={digits}
+          />
           <Button
             content="Update Account"
             disabled={Object.keys(formErrors).length !== 0 || !validation}
