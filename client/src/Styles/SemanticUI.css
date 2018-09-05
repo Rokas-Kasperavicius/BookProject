@@ -1,5 +1,5 @@
 .ui.secondary.pointing.menu .item {
-  font-size: 18px;
+  font-size: 23px;
 }
 
 .ui.secondary.pointing.menu .item:hover {
@@ -14,9 +14,18 @@
   font-family: 'Comic Sans MS';
 }
 
+.ui.input input {
+  text-align: center;
+}
+
 .ui.button {
   color: black;
   font-family: 'Comic Sans MS';
+  font-size: 21px !important;
+  cursor: pointer;
+  padding: 15px 15px;
+  width: 100px;
+  float: left;
 }
 
 .ui.modal > .content {

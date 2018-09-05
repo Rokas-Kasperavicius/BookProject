@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import { Link, withRouter } from 'react-router-dom';
 import { Field, reduxForm, getFormValues, getFormSyncErrors, Form } from 'redux-form'
 import { connect } from 'react-redux';
@@ -153,7 +153,7 @@ class Register extends React.Component {
           />
           <Button
             content="Register"
-            className="login"
+            className="register"
             disabled={Object.keys(formErrors).length !== 0 || !validation}
           />
           <div>

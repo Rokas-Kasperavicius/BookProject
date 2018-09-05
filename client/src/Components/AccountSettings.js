@@ -158,6 +158,7 @@ class AccountSettings extends React.Component {
           />
           <Button
             content="Update Account"
+            className='update-account'
             disabled={Object.keys(formErrors).length !== 0 || !validation}
           />
           <NotificationContainer />

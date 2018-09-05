@@ -2,14 +2,21 @@ import React from 'react';
 import Modals from './Modals'
 import { Button, Form } from 'semantic-ui-react'
 
+const titleReset = 'Are you sure you want to reset the book?';
+const titleSubmit = 'Are you sure you want to submit the book?';
+
 class BookForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       values: {},
       book: {},
-      open: false,
-      title: '',
+      modalProps: {
+        title: '',
+        content: '',
+        onFunction: undefined,
+        open: false,
+      }
     }
   }
   componentWillMount() {
@@ -54,6 +61,8 @@ class BookForm extends React.Component {
   }; //TODO: Fix this nonsense and maybe make inputs like in login, register and account settings!
 
   onReset = () => {
+    this.onModalClose();
+
     const { book } = this.state;
 
     this.setState({
@@ -63,20 +72,35 @@ class BookForm extends React.Component {
   };
 
   onSubmit = () => {
+    this.onModalClose();
+
     const { values } = this.state;
     this.props.changeBook(values);
   };
 
-  onModal = () => {
-    const { open } = this.state;
+  onModalOpen = (e, content, title, onFunction) => {
+    e.preventDefault();
+    const { modalProps } = this.state;
 
+    const newModalProps = {
+      ...modalProps,
+      open: true,
+      content: content,
+      title: title,
+      onFunction: onFunction,
+    };
+
+    this.setState({ modalProps: newModalProps })
+  };
+
+  onModalClose = () => {
     this.setState({
-      open: !open,
+     modalProps: { open: false }
     })
   };
 
   render () {
-    const { values, open } = this.state;
+    const { values, modalProps } = this.state;
 
     return (
       <div>
@@ -160,15 +184,13 @@ class BookForm extends React.Component {
             </div>
          </Form>
         </div>
-        <div className="buttons-form">
-          <Button content="Submit" className="submit form-buttons" onClick={() => this.onSubmit()} />
-          <Button content="Reset" className="reset form-buttons" onClick={() => this.onModal()} />
+        <div>
+          <Button content="Submit" className="submit" onClick={e => this.onModalOpen(e, 'Submit', titleSubmit, this.onSubmit)} />
+          <Button content="Reset" className="reset" onClick={e => this.onModalOpen(e, 'Reset', titleReset, this.onReset)} />
         </div>
         <Modals
-          open={open}
-          onModal={this.onModal}
-          onReset={this.onReset}
-          title={'Are you sure you want to reset the book?'}
+          modalProps={modalProps}
+          onClose={() => this.onModalClose()}
         >
         </Modals>
       </div>

@@ -19,4 +19,4 @@ export const maxValue = value => {
     return 'User name must be 20 or less characters long';
   }
   return undefined;
-}
+};

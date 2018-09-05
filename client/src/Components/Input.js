@@ -10,18 +10,15 @@ export const renderField = (
     autoComplete,
     meta: { touched, error, warning },
   }) => (
-  <div>
+  <div style={{ lineHeight: '39px' }}>
     <label className="label">{label}</label>
-    <div>
-      <Input
-        {...input}
-        placeholder={placeholder}
-        type={type}
-        className="text"
-        autoComplete={autoComplete}
-        style={{ width: "100%", textAlignLast: "center" }}
-      />
-      {touched && ((error && <span className="error">{error}</span>) || (warning && <span className="error">{warning}</span>))}
-    </div>
+    <Input
+      {...input}
+      placeholder={placeholder}
+      type={type}
+      className={touched ? 'text error-text' : 'text'}
+      autoComplete={autoComplete}
+    />
+    {touched && ((error && <span className="error">{error}</span>) || (warning && <span className="error">{warning}</span>))}
   </div>
 );
