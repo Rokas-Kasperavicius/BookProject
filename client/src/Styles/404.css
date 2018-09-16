@@ -1,12 +1,8 @@
 .not-found {
+  height: 100vh;
   display: flex;
-  position: absolute;
-  top: unset;
-  right: unset;
-  left: unset;
-  bottom: unset;
   align-items: center;
   justify-content: center;
-  font-size: large;
+  font-size: 30px;
   font-weight: bold;
 }

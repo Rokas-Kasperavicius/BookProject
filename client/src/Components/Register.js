@@ -9,8 +9,7 @@ import { removeToken } from './Token';
 import { required, phone, email, maxValue } from './Validation'
 import { register } from '../API/API';
 import { clear } from "../Actions/Actions";
-import { NotificationContainer, NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import { NotificationManager } from 'react-notifications';
 
 class Register extends React.Component {
   constructor(props){
@@ -36,7 +35,7 @@ class Register extends React.Component {
     register(values).then(errors => {
       if (errors.length !== 0) {
         for (let i = 0; i < errors.length; i++) {
-          NotificationManager.error(errors[i]);
+          NotificationManager.error(errors[i], '', 4000);
         }
       } else {
         this.props.history.push('/');
@@ -48,6 +47,15 @@ class Register extends React.Component {
   componentWillReceiveProps(nextProps){
     const values = nextProps.formValues;
 
+    this.passwordCheck(values);
+  } //Password check
+  componentDidMount(){
+    const values = this.props.formValues;
+
+    this.passwordCheck(values);
+  } //Password check
+
+  passwordCheck = values => {
     if (values && values.password && values.password.length >= 8) {
       this.setState({ characters: true });
     }
@@ -75,7 +83,7 @@ class Register extends React.Component {
     else {
       this.setState({ digits: undefined });
     }
-  } //Password check
+  }
 
   render() {
     const { formErrors } = this.props;
@@ -146,10 +154,10 @@ class Register extends React.Component {
             autoComplete="new-password"
           />
           <PasswordValidation
-              characters={characters}
-              lowercase={lowercase}
-              uppercase={uppercase}
-              digits={digits}
+            characters={characters}
+            lowercase={lowercase}
+            uppercase={uppercase}
+            digits={digits}
           />
           <Button
             content="Register"
@@ -159,7 +167,6 @@ class Register extends React.Component {
           <div>
             Already have an account? <Link to="/login">Login</Link>
           </div>
-          <NotificationContainer />
         </Form>
       </div>
     );

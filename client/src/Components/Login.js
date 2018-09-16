@@ -8,8 +8,7 @@ import { renderField }from './Input';
 import { required } from './Validation'
 import { sendUser, clear } from '../Actions/Actions';
 import { login } from '../API/API';
-import { NotificationContainer, NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import { NotificationManager } from 'react-notifications';
 
 class Login extends React.Component {
   onSubmit = e => {
@@ -20,8 +19,8 @@ class Login extends React.Component {
       if (properties.errors) {
         NotificationManager.error(properties.errors, '', 4000);
       } else {
-        setToken();
         this.props.sendUser(properties.loggedUser);
+        setToken(properties.token);
         this.props.history.push('/');
       }
     })
@@ -29,6 +28,7 @@ class Login extends React.Component {
 
   componentWillMount() {
     removeToken();
+
     this.props.clear();
   }
 
@@ -66,7 +66,6 @@ class Login extends React.Component {
           <div>
             Don't have an account? <Link to="/register">Register</Link>
           </div>
-          <NotificationContainer />
         </Form>
       </div>
     );

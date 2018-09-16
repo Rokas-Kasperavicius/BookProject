@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let path = require('path');
+let randomstring = require("randomstring");
 
 const fs = require('fs');
 
@@ -16,14 +17,16 @@ router.post('/login', (req, res) => {
     let newLogin = req.body;
     let loggedUser = {};
     let errors = '';
+    let token = randomstring.generate(30);
+
     const user = users.filter(user => user.email === newLogin.email);
 
     if (user.length === 0 || (user.length > 0 && user[0].password !== newLogin.password)) {
       errors = 'Email address or password was invalid';
     } else {
-      loggedUser = user[0];
+      loggedUser = {...user[0], token: token};
     }
-    res.json({ errors, loggedUser });
+    res.json({ errors, loggedUser, token });
   });
 });
 
@@ -36,7 +39,7 @@ router.post('/register', (req, res) => {
 
     let errors = [];
 
-    for (let i = 0; i < users.length; i++) { //Check if username is unique
+    for (let i = 0; i < users.length; i++) { // Check if username and email are unique
       if (users[i].userName === newRegister.userName) {
         errors.push('User name must be unique!');
       }
@@ -46,7 +49,7 @@ router.post('/register', (req, res) => {
     }
 
     if (errors.length === 0) {
-      newRegister = { id: users.length + 1, ...newRegister };
+      newRegister = { id: users.length + 1, token: '', ...newRegister };
       users.push(newRegister);
 
       fs.writeFile('./client/src/Data/Users.json', JSON.stringify(users),'utf-8', (err) => {

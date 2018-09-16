@@ -16,7 +16,8 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "randomstring": "^1.1.5"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"

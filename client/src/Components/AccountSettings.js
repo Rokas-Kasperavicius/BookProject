@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react'
-import { Field, reduxForm, getFormValues, getFormSyncErrors, Form } from 'redux-form'
-import { required, phone, email, maxValue } from './Validation'
+import { Button } from 'semantic-ui-react';
+import { Field, reduxForm, getFormValues, getFormSyncErrors, Form } from 'redux-form';
+import { required, phone, email, maxValue } from './Validation';
 import { renderField }from './Input';
 import { PasswordValidation } from "./PasswordValidation";
 import { NotificationContainer } from 'react-notifications';
@@ -21,40 +21,17 @@ class AccountSettings extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    let values = nextProps.formValues;
+    const values = nextProps.formValues;
 
-    if (values && values.password && values.password.length >= 8) {
-      this.setState({ characters: true });
-    }
-    else {
-      this.setState({ characters: undefined });
-    }
+    this.passwordCheck(values);
+  } //Password check
+  componentDidMount(){
+    const values = this.props.formValues;
 
-    if (values && values.password && /(?=.*[a-z])/.test(values.password)) {
-      this.setState({ lowercase: true });
-    }
-    else {
-      this.setState({ lowercase: undefined });
-    }
-
-    if (values && values.password && /(?=.*[A-Z])/.test(values.password)) {
-      this.setState({ uppercase: true });
-    }
-    else {
-      this.setState({ uppercase: undefined });
-    }
-
-    if (values && values.password && /(?=.*[0-9])/.test(values.password)) {
-      this.setState({ digits: true });
-    }
-    else {
-      this.setState({ digits: undefined });
-    }
+    this.passwordCheck(values);
   } //Password check
 
-  componentWillMount(){
-    let values = this.props.formValues;
-
+  passwordCheck = values => {
     if (values && values.password && values.password.length >= 8) {
       this.setState({ characters: true });
     }
@@ -86,6 +63,7 @@ class AccountSettings extends React.Component {
 
   render () {
     const { formErrors } = this.props;
+
     const { uppercase, lowercase, characters, digits } = this.state;
     const validation = uppercase && lowercase && characters && digits;
 
@@ -169,7 +147,6 @@ class AccountSettings extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  logged_user: state.state.logged_user,
   formValues: getFormValues('account-settings')(state),
   formErrors: getFormSyncErrors('account-settings')(state),
   initialValues: {
@@ -185,6 +162,7 @@ const mapStateToProps = state => ({
 
 const formConfig = {
   form: 'account-settings',
+  enableReinitialize: true,
 };
 
 export default withRouter(connect(mapStateToProps)(reduxForm(formConfig)(AccountSettings)));

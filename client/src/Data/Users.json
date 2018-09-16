@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "token": "",
     "firstName": "Rokas",
     "lastName": "Kasperavicius",
     "userName": "Rokas192",
@@ -11,6 +12,7 @@
   },
   {
     "id": 2,
+    "token": "",
     "firstName": "Antanas",
     "lastName": "Klebonas",
     "userName": "Klantanas",
@@ -21,6 +23,7 @@
   },
   {
     "id": 3,
+    "token": "",
     "firstName": "Marijonas",
     "lastName": "Steponas",
     "userName": "Stepka34",
@@ -30,6 +33,7 @@
     "password": "Steponas34."
   },
   {
+    "token": "",
     "password": "Testas123.",
     "firstName": "Rokisnidasd",
     "lastName": "asd",
@@ -40,6 +44,7 @@
     "id": 4
   },
   {
+    "token": "",
     "userName": "asd2",
     "password": "Testas123.",
     "firstName": "asdasd",
@@ -51,6 +56,7 @@
   },
   {
     "id": 6,
+    "token": "",
     "userName": "awd2",
     "password": "Testas123.",
     "firstName": "ad2",
@@ -61,6 +67,7 @@
   },
   {
     "id": 7,
+    "token": "",
     "userName": "asd2q",
     "password": "Testas123.",
     "firstName": "sad2ads",
@@ -71,6 +78,7 @@
   },
   {
     "id": 8,
+    "token": "",
     "userName": "ad2",
     "password": "Testas123.",
     "firstName": "ads2asd",
@@ -81,6 +89,7 @@
   },
   {
     "id": 9,
+    "token": "",
     "userName": "asd23e",
     "password": "Testas123.",
     "firstName": "asdasd",
@@ -91,6 +100,7 @@
   },
   {
     "id": 10,
+    "token": "",
     "firstName": "Rokas",
     "lastName": "Kasperavičius",
     "userName": "SupaplexMVP",
@@ -98,5 +108,38 @@
     "email": "supaplexmvp@gmail.com",
     "phoneNumber": "+37068022475",
     "password": "Pagaliau123"
+  },
+  {
+    "id": 11,
+    "token": "",
+    "lastName": "452",
+    "firstName": "1",
+    "userName": "45",
+    "country": "LT",
+    "email": "ktu.vaizgantas@gmail.com",
+    "phoneNumber": "5278757587",
+    "password": "Testas123."
+  },
+  {
+    "id": 12,
+    "token": "",
+    "firstName": "dg",
+    "lastName": "dfg",
+    "userName": "df",
+    "country": "LT",
+    "email": "ktu.vaizgantas@gmai1l.com",
+    "phoneNumber": "154541215",
+    "password": "dgDFe454"
+  },
+  {
+    "id": 13,
+    "token": "",
+    "firstName": "asd",
+    "lastName": "asd",
+    "userName": "asd",
+    "country": "LT",
+    "email": "ktu.vaizgdantas@gmail.com",
+    "phoneNumber": "9684874684",
+    "password": "Testas123."
   }
 ]

@@ -1,8 +1,8 @@
-export const setToken = () => {
+export const setToken = token => {
   const d = new Date();
   d.setTime(d.getTime() + (5*60*1000));
   const expires = "expires="+ d.toUTCString();
-  document.cookie = 'token=true; ' + expires + '; path=/;';
+  document.cookie = `token=${ token }; ` + expires + '; path=/;';
 };
 
 export const removeToken = () => {

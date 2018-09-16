@@ -1,6 +1,11 @@
 import React from 'react';
 import Modals from './Modals'
-import { Button, Form } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Button, Form } from 'semantic-ui-react';
+import {getFormSyncErrors, getFormValues, reduxForm, Field} from "redux-form";
+import { renderField }from './Input';
+import {required} from "./Validation";
 
 const titleReset = 'Are you sure you want to reset the book?';
 const titleSubmit = 'Are you sure you want to submit the book?';
@@ -9,7 +14,6 @@ class BookForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      values: {},
       book: {},
       modalProps: {
         title: '',
@@ -19,63 +23,24 @@ class BookForm extends React.Component {
       }
     }
   }
+
   componentWillMount() {
-    const { book } = this.props;
-
     this.setState({
-      values: book,
-      book,
+      book: this.props.formValues,
     })
   }
-
-  componentWillReceiveProps(nextProps) {
-    const { book } = nextProps;
-
-    this.setState({
-      values: book,
-      book,
-    })
-  }
-
-  onValueChange = (val, fieldName, author) => {
-    const { values } = this.state;
-
-    if (!author) {
-      const newValues = {
-        ...values,
-        [fieldName]: val,
-      };
-      this.setState({ values: newValues });
-    }
-    else if (author) {
-      const newAuthor = {
-        ...values.authors,
-        [fieldName]: val,
-      };
-      const newValues = {
-        ...values,
-        authors: newAuthor,
-      };
-      this.setState({ values: newValues })
-    }
-  }; //TODO: Fix this nonsense and maybe make inputs like in login, register and account settings!
 
   onReset = () => {
+    this.props.reset();
+
     this.onModalClose();
-
-    const { book } = this.state;
-
-    this.setState({
-      values: book,
-      open: false,
-    })
   };
 
   onSubmit = () => {
-    this.onModalClose();
+    const { formValues } = this.props;
 
-    const { values } = this.state;
-    this.props.changeBook(values);
+    this.onModalClose();
+    this.props.changeBook(formValues);
   };
 
   onModalOpen = (e, content, title, onFunction) => {
@@ -100,93 +65,68 @@ class BookForm extends React.Component {
   };
 
   render () {
-    const { values, modalProps } = this.state;
+    const { modalProps } = this.state;
+    const { formErrors } = this.props;
 
     return (
       <div>
         <div>
           <Form className="form">
-            <div>
-               <label className="label">
-                 Title:
-               </label>
-               <input
-                type="text"
-                className="text"
-                placeholder="Enter Title"
-                value={values.title}
-                onChange={e => this.onValueChange(e.target.value, 'title')}
-              />
-            </div>
-            <div>
-              <label className="label">
-                Author Name:
-              </label>
-              <input
-                type="text"
-                className="text"
-                placeholder="Enter Author's Name"
-                value={values.authors && values.authors.name}
-                onChange={e => this.onValueChange(e.target.value, 'name', true)}
-              />
-            </div>
-
-            <div>
-              <label className="label">
-                Downloads:
-              </label>
-              <input
-                type="number"
-                className="text"
-                placeholder="Enter Download Count"
-                value={values.download_count}
-                onChange={e => this.onValueChange(e.target.value, 'download_count')}
-              />
-            </div>
-
-            <div>
-              <label className="label">
-                Languages:
-              </label>
-              <input
-                type="text"
-                className="text"
-                placeholder="Enter Language"
-                value={values.languages}
-                onChange={e => this.onValueChange(e.target.value, 'languages')}
-              />
-            </div>
-
-            <div>
-              <label className="label">
-                Bookshelves:
-              </label>
-              <input
-                type="text"
-                className="text"
-                placeholder="Enter Bookshelves"
-                value={values.bookshelves}
-                onChange={e => this.onValueChange(e.target.value, 'bookshelves')}
-              />
-            </div>
-
-            <div>
-              <label className="label">
-                Media Type:
-              </label>
-              <input
-                type="text"
-                className="text"
-                placeholder="Enter Media Type"
-                value={values.media_type}
-                onChange={e => this.onValueChange(e.target.value, 'media_type')}
-              />
-            </div>
+            <Field
+              name="title"
+              label="Title"
+              component={renderField}
+              validate={required}
+              placeholder="Enter Title"
+              autoComplete="title"
+            />
+            <Field
+              name="subject"
+              label="Subject"
+              component={renderField}
+              validate={required}
+              placeholder="Enter subject"
+              autoComplete="subject"
+            />
+            <Field
+              name="language"
+              label="Language"
+              component={renderField}
+              validate={required}
+              placeholder="Enter Language"
+              autoComplete="language"
+            />
+            <Field
+              name="pageNumber"
+              type="number"
+              label="Page Number"
+              component={renderField}
+              validate={required}
+              placeholder="Enter Page Number"
+              autoComplete="pageNumber"
+            />
+            <Field
+              name="plot"
+              label="Plot"
+              component={renderField}
+              validate={required}
+              placeholder="Enter The Plot"
+              autoComplete="plots"
+            />
          </Form>
         </div>
         <div>
-          <Button content="Submit" className="submit" onClick={e => this.onModalOpen(e, 'Submit', titleSubmit, this.onSubmit)} />
-          <Button content="Reset" className="reset" onClick={e => this.onModalOpen(e, 'Reset', titleReset, this.onReset)} />
+          <Button
+            content="Reset"
+            className="reset"
+            onClick={e => this.onModalOpen(e, 'Reset', titleReset, this.onReset)}
+          />
+          <Button
+            content="Submit"
+            className="submit"
+            onClick={e => this.onModalOpen(e, 'Submit', titleSubmit, this.onSubmit)}
+            disabled={Object.keys(formErrors).length !== 0}
+          />
         </div>
         <Modals
           modalProps={modalProps}
@@ -198,4 +138,22 @@ class BookForm extends React.Component {
   }
 }
 
-export default BookForm;
+const mapStateToProps = (state, props) => ({
+  formValues: getFormValues('book-form')(state),
+  formErrors: getFormSyncErrors('book-form')(state),
+  initialValues: {
+    id: props.book.id,
+    title: props.book.title,
+    subject: props.book.subject,
+    language: props.book.language,
+    pageNumber: props.book.pageNumber,
+    plot: props.book.plot
+  }
+});
+
+const formConfig = {
+  form: 'book-form',
+  enableReinitialize: true,
+};
+
+export default withRouter(connect(mapStateToProps)(reduxForm(formConfig)(BookForm)));
