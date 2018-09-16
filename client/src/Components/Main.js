@@ -54,14 +54,15 @@ class Main extends React.Component {
 
   changeBook = (book) => {
     booksApiPost(book).then(books => {
+      console.log('Done');
       this.setState({
         books,
         filtered: books,
+        book: undefined,
       });
-      this.handleSubjectReset();
     });
   };
-
+  // TODO: Because of too many submits everything breaks!!!
   render() {
     const { subjects, filtered, book } = this.state;
 
