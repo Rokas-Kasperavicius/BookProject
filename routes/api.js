@@ -21,23 +21,11 @@ router.get('/subjects', (req, res) => {
 });
 
 router.post('/books', (req, res) => {
-  fs.readFile('./client/src/Data/BookData.json', 'utf-8', (err, data) => {
-    let books = JSON.parse(data);
-    let book = req.body;
-
-    for (let i = 0; i < books.length; i++) {
-      if (books[i].id === book.id) {
-        books[i] = book;
-        break;
-      }
-    }
-
-    fs.writeFile('./client/src/Data/BookData.json', JSON.stringify(books),'utf-8', (err) => {
+  fs.writeFile('./client/src/Data/BookData.json', JSON.stringify(req.body),'utf-8', (err) => {
       if (err) throw err;
     });
 
-    res.json(books);
-  });
+  res.end("Success");
 });
 
 module.exports = router;

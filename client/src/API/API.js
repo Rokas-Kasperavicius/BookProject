@@ -15,14 +15,13 @@ export const subjectsApi = () => {
 };
 
 export const booksApiPost = books => {
-  return fetch('/api/books', {
+  fetch('/api/books', {
     method: 'POST',
     body: JSON.stringify(books),
-    headers: {"Content-Type": "application/json"}})
-      .then( res => res.json())
-      .then(books => {
-        return books;
-    });
+    headers: {"Content-Type": "application/json"}
+  }).then( res => {
+    console.log(`Sending books' data to API... Response status: ${res.status}`);
+  });
 };
 
 export const login = values => {

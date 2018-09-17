@@ -53,13 +53,21 @@ class Main extends React.Component {
   };
 
   changeBook = (book) => {
-    booksApiPost(book).then(books => {
-      console.log('Done');
-      this.setState({
-        books,
-        filtered: books,
-        book: undefined,
-      });
+    const { books } = this.state;
+
+    for (let i = 0; i < books.length; i++) {
+      if (books[i].id === book.id) {
+        books[i] = book;
+        break;
+      }
+    }
+
+    booksApiPost(books);
+
+    this.setState({
+      books,
+      filtered: books,
+      book: undefined,
     });
   };
   // TODO: Because of too many submits everything breaks!!!
