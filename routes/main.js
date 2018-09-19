@@ -54,10 +54,12 @@ router.post('/register', (req, res) => {
 
       fs.writeFile('./client/src/Data/Users.json', JSON.stringify(users),'utf-8', (err) => {
         if (err) throw err;
-      });
-    }
 
-    res.json(errors);
+        res.json(errors); //TODO: Make this better!
+      });
+    } else {
+      res.json(errors);
+    }
   });
 });
 

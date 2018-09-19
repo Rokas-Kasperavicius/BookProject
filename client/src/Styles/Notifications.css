@@ -1,7 +1,6 @@
 .notification {
   margin-top: unset;
   text-align: center;
-  background-color: #bc0000;
   font-weight: bold;
   opacity: 1;
   padding-right: 58px;
@@ -9,6 +8,16 @@
   display: flex;
   justify-content: center;
   font-family: 'Comic Sans MS';
+}
+
+.notification-success {
+  background-color: #8fd800;
+  color: black;
+}
+
+.notification-error {
+  background-color: #bc0000;
+  color: white;
 }
 
 .notification-success:before {

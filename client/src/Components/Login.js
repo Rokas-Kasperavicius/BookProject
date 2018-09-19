@@ -19,8 +19,9 @@ class Login extends React.Component {
       if (properties.errors) {
         NotificationManager.error(properties.errors, '', 4000);
       } else {
+        NotificationManager.success('You have successfully logged in', '', 4000);
         this.props.sendUser(properties.loggedUser);
-        setToken(properties.token);
+        setToken(properties.token); //Todo: puts error: "Session Timeout" after registering
         this.props.history.push('/');
       }
     })

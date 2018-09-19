@@ -38,6 +38,7 @@ class Register extends React.Component {
           NotificationManager.error(errors[i], '', 4000);
         }
       } else {
+        NotificationManager.success('You have successfully registered. You can now log in', '', 4000);
         this.props.history.push('/');
       }
     })

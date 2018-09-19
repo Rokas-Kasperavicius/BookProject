@@ -3,6 +3,7 @@ import BookForm from './BookForm';
 import BookList from './BookList';
 import { Header } from 'semantic-ui-react';
 import { booksApi, booksApiPost, subjectsApi } from '../API/API';
+import { NotificationManager } from 'react-notifications';
 
 class Main extends React.Component {
 
@@ -54,7 +55,7 @@ class Main extends React.Component {
 
   changeBook = (book) => {
     booksApiPost(book).then(books => {
-      console.log('Done');
+      NotificationManager.success('The Book was successfully updated', '', 4000);
       this.setState({
         books,
         filtered: books,
