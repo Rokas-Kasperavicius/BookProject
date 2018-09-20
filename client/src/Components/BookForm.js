@@ -4,8 +4,10 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
 import {getFormSyncErrors, getFormValues, reduxForm, Field} from "redux-form";
-import { renderField }from './Input';
+import { renderField } from './Input';
+import { renderFieldTextArea } from './InputTextArea';
 import {required} from "./Validation";
+import {NotificationManager} from "react-notifications";
 
 const titleReset = 'Are you sure you want to reset the book?';
 const titleSubmit = 'Are you sure you want to submit the book?';
@@ -32,7 +34,7 @@ class BookForm extends React.Component {
 
   onReset = () => {
     this.props.reset();
-
+    NotificationManager.success('The Book was successfully reset', '', 4000);
     this.onModalClose();
   };
 
@@ -108,7 +110,7 @@ class BookForm extends React.Component {
             <Field
               name="plot"
               label="Plot"
-              component={renderField}
+              component={renderFieldTextArea}
               validate={required}
               placeholder="Enter The Plot"
               autoComplete="plots"

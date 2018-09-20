@@ -18,6 +18,10 @@
   text-align: center;
 }
 
+.ui.header {
+  font-family: 'Comic Sans MS';
+}
+
 .ui.button {
   color: black;
   font-family: 'Comic Sans MS';
@@ -26,6 +30,13 @@
   padding: 15px 15px;
   width: 100px;
   float: left;
+}
+
+.ui.form .field>label {
+  font-size: 28px;
+  font-weight: unset;
+  margin: unset;
+  display: unset;
 }
 
 .ui.modal > .content {

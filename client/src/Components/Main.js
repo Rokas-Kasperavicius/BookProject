@@ -45,7 +45,7 @@ class Main extends React.Component {
 
   handleSubjectReset = () => {
     const { books } = this.state;
-
+    
     this.setState({ filtered: books, book: undefined });
   };
 

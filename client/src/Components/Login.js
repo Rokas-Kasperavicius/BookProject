@@ -19,7 +19,7 @@ class Login extends React.Component {
       if (properties.errors) {
         NotificationManager.error(properties.errors, '', 4000);
       } else {
-        NotificationManager.success('You have successfully logged in', '', 4000);
+        NotificationManager.success('You have successfully logged in', '', 99999999);
         this.props.sendUser(properties.loggedUser);
         setToken(properties.token); //Todo: puts error: "Session Timeout" after registering
         this.props.history.push('/');
@@ -64,7 +64,7 @@ class Login extends React.Component {
             className="login"
             disabled={Object.keys(formErrors).length !== 0}
           />
-          <div>
+          <div className="redirect">
             Don't have an account? <Link to="/register">Register</Link>
           </div>
         </Form>

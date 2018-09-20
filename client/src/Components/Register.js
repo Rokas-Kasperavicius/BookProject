@@ -165,7 +165,7 @@ class Register extends React.Component {
             className="register"
             disabled={Object.keys(formErrors).length !== 0 || !validation}
           />
-          <div>
+          <div className="redirect">
             Already have an account? <Link to="/login">Login</Link>
           </div>
         </Form>

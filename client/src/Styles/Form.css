@@ -16,11 +16,11 @@
 }
 
 .submit {
-  background-color: green !important;
+  background-color: #32c119 !important;
 }
 
 .reset {
-  background-color: red !important;
+  background-color: #bc0000 !important;
 }
 
 .guest-form {
@@ -45,15 +45,22 @@
 }
 
 .register, .login, .update-account {
-  background-color: green !important;
+  background-color: #32c119 !important;
   width: 100% !important;
   font-size: 22px !important;
 }
 
 .login {
-  margin-top: 10px !important;
+  margin-top: 20px !important;
 }
 
+.register, .update-account {
+  margin-top: 25px !important;
+}
+
+.redirect {
+  padding-top: 86px;
+}
 
 .login-title {
   display: flex;

@@ -1,3 +1,5 @@
+import { NotificationManager } from 'react-notifications';
+
 export const booksApi = () => {
   return fetch('/api/books')
     .then(res => res.json())
@@ -22,6 +24,9 @@ export const booksApiPost = books => {
       .then( res => res.json())
       .then(books => {
         return books;
+    })
+    .catch(() => {
+      NotificationManager.error('Something went wrong. Please try again', '', 4000);
     });
 };
 

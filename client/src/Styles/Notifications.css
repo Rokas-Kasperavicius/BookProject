@@ -7,11 +7,16 @@
   font-size: 22px;
   display: flex;
   justify-content: center;
+  border-radius: 12px;
+  -webkit-box-shadow: unset;
+  border-style: solid;
+  border-color: black;
+  margin-top: 5px;
   font-family: 'Comic Sans MS';
 }
 
 .notification-success {
-  background-color: #8fd800;
+  background-color: #65ff3a;
   color: black;
 }
 
