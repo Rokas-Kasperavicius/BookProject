@@ -43,6 +43,11 @@ h4, h3, h2, h1 {
 .subject > span:hover {
   color: grey;
 }
+
+.book > span {
+  float: left;
+}
+
 .book > span:hover {
   color: grey;
 }

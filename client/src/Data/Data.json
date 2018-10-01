@@ -1,0 +1,101 @@
+[
+  {
+    "id": 0,
+    "books": [
+      {
+        "id": 1,
+        "title": "Pride and Prejudice",
+        "subject": "Fiction",
+        "language": "English",
+        "pageNumber": "200",
+        "plot": "Very Interesting Book"
+      },
+      {
+        "id": 2,
+        "title": "Calculus Made Easy",
+        "subject": "Science",
+        "language": "Arabic",
+        "pageNumber": "5685",
+        "plot": "Very Interesting Book"
+      },
+      {
+        "id": 3,
+        "title": "Alice's Adventures in Wonderlandss",
+        "subject": "Fiction",
+        "language": "Lithuania",
+        "pageNumber": 150,
+        "plot": "Very Interesting Book. I Really liked it"
+      },
+      {
+        "id": 4,
+        "title": "The Adventures of Tom Sawyer",
+        "subject": "Science",
+        "language": "Italic",
+        "pageNumber": 700,
+        "plot": "Nice\n"
+      }
+    ],
+    "subjects": [
+      {
+        "name": "Fiction",
+        "id": "1"
+      },
+      {
+        "name": "Science",
+        "id": "2"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "books": [
+      {
+        "id": 1,
+        "title": "and Prejudice",
+        "subject": "Fiction",
+        "language": "English",
+        "pageNumber": "200",
+        "plot": "Very Interesting Book"
+      },
+      {
+        "id": 2,
+        "title": "Calculus Made Easy",
+        "subject": "Science",
+        "language": "Arabic",
+        "pageNumber": "5685",
+        "plot": "Very Interesting Book"
+      },
+      {
+        "id": 3,
+        "title": "Alice's Adventures in Wonderlandss",
+        "subject": "Fiction",
+        "language": "Lithuania",
+        "pageNumber": 150,
+        "plot": "Very Interesting Book. I Really liked it"
+      },
+      {
+        "id": 4,
+        "title": "The Adventures of Sawyer",
+        "subject": "Science",
+        "language": "Italic",
+        "pageNumber": 700,
+        "plot": "Nice\n"
+      }
+    ],
+    "subjects": [
+      {
+        "name": "Fiction",
+        "id": "1"
+      },
+      {
+        "name": "Science",
+        "id": "2"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "books": [],
+    "subjects": []
+  }
+]

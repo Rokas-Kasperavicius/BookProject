@@ -2,11 +2,12 @@ import React from 'react';
 import BookForm from './BookForm';
 import BookList from './BookList';
 import { Header } from 'semantic-ui-react';
-import { booksApi, booksApiPost, subjectsApi } from '../API/API';
+import { dataApiGet, booksApiPost } from '../API/API';
 import { NotificationManager } from 'react-notifications';
+import { timeout } from '../Constants/Constants';
+import { connect } from "react-redux";
 
 class Main extends React.Component {
-
   constructor(props){
     super(props);
     this.state = {
@@ -22,16 +23,11 @@ class Main extends React.Component {
   }
 
   loadDataFromAPI = () => {
-    booksApi().then(books => {
+    dataApiGet(this.props.logged_user.id).then(data => {
       this.setState({
-        books,
-        filtered: books,
-      })
-    });
-
-    subjectsApi().then(subjects => {
-      this.setState({
-        subjects,
+        books: data.books,
+        filtered: data.books,
+        subjects: data.subjects,
       })
     });
   };
@@ -54,8 +50,9 @@ class Main extends React.Component {
   };
 
   changeBook = (book) => {
-    booksApiPost(book).then(books => {
-      NotificationManager.success('The Book was successfully updated', '', 4000);
+    const id = this.props.logged_user.id;
+    booksApiPost( book, id ).then(books => {
+      NotificationManager.success('The Book was successfully updated', '', timeout);
       this.setState({
         books,
         filtered: books,
@@ -63,14 +60,13 @@ class Main extends React.Component {
       });
     });
   };
-  // TODO: Because of too many submits everything breaks!!!
+
   render() {
     const { subjects, filtered, book } = this.state;
 
     return (
       <div className="app">
-        <Header>
-          <h3 className="title">Choose your favourite subject!</h3>
+        <Header style={{ display: "grid" }}>
           <div className="subject-title">
             <span onClick={() => this.handleSubjectReset()}>All Subjects:</span>
           </div>
@@ -89,5 +85,8 @@ class Main extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  logged_user: state.state.logged_user,
+});
 
-export default (Main);
+export default connect(mapStateToProps)(Main);

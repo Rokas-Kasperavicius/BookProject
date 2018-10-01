@@ -26,7 +26,7 @@ router.post('/login', (req, res) => {
     } else {
       loggedUser = {...user[0], token: token};
     }
-    res.json({ errors, loggedUser, token });
+    res.json({ errors, loggedUser });
   });
 });
 
@@ -36,7 +36,6 @@ router.post('/register', (req, res) => {
 
     let users = JSON.parse(data);
     let newRegister = req.body;
-
     let errors = [];
 
     for (let i = 0; i < users.length; i++) { // Check if username and email are unique
@@ -48,20 +47,40 @@ router.post('/register', (req, res) => {
       }
     }
 
-    if (errors.length === 0) {
-      newRegister = { id: users.length + 1, token: '', ...newRegister };
-      users.push(newRegister);
-
-      fs.writeFile('./client/src/Data/Users.json', JSON.stringify(users),'utf-8', (err) => {
-        if (err) throw err;
-
-        res.json(errors); //TODO: Make this better!
-      });
-    } else {
+    if (errors.length !== 0) {
       res.json(errors);
+      return;
     }
+
+    users.push({
+      id: users[0],
+      token: '',
+      ...newRegister
+    });
+
+    fs.readFile('./client/src/Data/Data.json', 'utf-8', (err, data) => {
+      let usersData = JSON.parse(data);
+
+      usersData.push({
+        id: users[0],
+        books: [],
+        subjects: []
+      });
+
+      users[0]++;
+
+      fs.writeFile('./client/src/Data/Users.json', JSON.stringify(users), 'utf-8', (err) => {
+        if (err) throw err; //TODO: Maybe put different tiers in the functions?!?
+
+        fs.writeFile('./client/src/Data/Data.json', JSON.stringify(usersData),'utf-8', (err) => {
+          if (err) throw err;
+
+          res.json([]);
+        });
+      });
+    });
+
   });
 });
-
 
 module.exports = router;

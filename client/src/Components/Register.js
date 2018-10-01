@@ -10,6 +10,7 @@ import { required, phone, email, maxValue } from './Validation'
 import { register } from '../API/API';
 import { clear } from "../Actions/Actions";
 import { NotificationManager } from 'react-notifications';
+import { timeout } from '../Constants/Constants';
 
 class Register extends React.Component {
   constructor(props){
@@ -33,12 +34,13 @@ class Register extends React.Component {
     const values = this.props.formValues;
 
     register(values).then(errors => {
+      console.log(errors);
       if (errors.length !== 0) {
         for (let i = 0; i < errors.length; i++) {
           NotificationManager.error(errors[i], '', 4000);
         }
       } else {
-        NotificationManager.success('You have successfully registered. You can now log in', '', 4000);
+        NotificationManager.success('You have successfully registered. You can now log in', '', timeout);
         this.props.history.push('/');
       }
     })
@@ -84,7 +86,7 @@ class Register extends React.Component {
     else {
       this.setState({ digits: undefined });
     }
-  }
+  };
 
   render() {
     const { formErrors } = this.props;

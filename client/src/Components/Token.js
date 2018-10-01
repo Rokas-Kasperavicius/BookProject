@@ -1,6 +1,6 @@
 export const setToken = token => {
   const d = new Date();
-  d.setTime(d.getTime() + (5*60*1000));
+  d.setTime(d.getTime() + (10*60*1000));
   const expires = "expires="+ d.toUTCString();
   document.cookie = `token=${ token }; ` + expires + '; path=/;';
 };

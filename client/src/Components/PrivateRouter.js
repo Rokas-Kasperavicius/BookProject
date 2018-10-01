@@ -2,6 +2,7 @@ import React from 'react';
 import Router from './Router';
 import { NotificationManager } from 'react-notifications';
 import { connect } from "react-redux";
+import { timeout } from '../Constants/Constants';
 
 const PrivateRouter = ({ history, layout, component, logged_user }) => {
 
@@ -14,7 +15,7 @@ const PrivateRouter = ({ history, layout, component, logged_user }) => {
 )};
 
 const Redirect = history => {
-  NotificationManager.error('Session Timeout', '', 4000);
+  NotificationManager.error('Session Timeout', '', timeout);
   history.push('/login');
 };
 

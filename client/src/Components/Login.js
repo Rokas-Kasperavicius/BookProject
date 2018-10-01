@@ -9,6 +9,7 @@ import { required } from './Validation'
 import { sendUser, clear } from '../Actions/Actions';
 import { login } from '../API/API';
 import { NotificationManager } from 'react-notifications';
+import { timeout } from '../Constants/Constants';
 
 class Login extends React.Component {
   onSubmit = e => {
@@ -17,11 +18,11 @@ class Login extends React.Component {
 
     login(values).then(properties => {
       if (properties.errors) {
-        NotificationManager.error(properties.errors, '', 4000);
+        NotificationManager.error(properties.errors, '', timeout);
       } else {
-        NotificationManager.success('You have successfully logged in', '', 99999999);
+        NotificationManager.success('You have successfully logged in', '', timeout);
         this.props.sendUser(properties.loggedUser);
-        setToken(properties.token); //Todo: puts error: "Session Timeout" after registering
+        setToken(properties.loggedUser.token); //Todo: puts error: "Session Timeout" after registering
         this.props.history.push('/');
       }
     })
@@ -39,7 +40,7 @@ class Login extends React.Component {
     return (
       <div className="app">
         <h2 className="title">
-          Login to the Library Of Books
+          Login to the Library Of Books!!!
         </h2>
         <Form className="form guest-form" onSubmit={e => this.onSubmit(e)}>
           <Field

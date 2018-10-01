@@ -3,11 +3,12 @@ import Modals from './Modals'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Form } from 'semantic-ui-react';
-import {getFormSyncErrors, getFormValues, reduxForm, Field} from "redux-form";
+import { getFormSyncErrors, getFormValues, reduxForm, Field } from "redux-form";
 import { renderField } from './Input';
 import { renderFieldTextArea } from './InputTextArea';
-import {required} from "./Validation";
-import {NotificationManager} from "react-notifications";
+import { required } from "./Validation";
+import { NotificationManager } from "react-notifications";
+import { timeout } from '../Constants/Constants';
 
 const titleReset = 'Are you sure you want to reset the book?';
 const titleSubmit = 'Are you sure you want to submit the book?';
@@ -34,7 +35,7 @@ class BookForm extends React.Component {
 
   onReset = () => {
     this.props.reset();
-    NotificationManager.success('The Book was successfully reset', '', 4000);
+    NotificationManager.success('The Book was successfully reset', '', timeout);
     this.onModalClose();
   };
 
@@ -76,7 +77,7 @@ class BookForm extends React.Component {
           <Form className="form">
             <Field
               name="title"
-              label="Title"
+              label="Pavadinimas"
               component={renderField}
               validate={required}
               placeholder="Enter Title"
@@ -84,7 +85,7 @@ class BookForm extends React.Component {
             />
             <Field
               name="subject"
-              label="Subject"
+              label="Tema"
               component={renderField}
               validate={required}
               placeholder="Enter subject"
@@ -92,7 +93,7 @@ class BookForm extends React.Component {
             />
             <Field
               name="language"
-              label="Language"
+              label="Kalba"
               component={renderField}
               validate={required}
               placeholder="Enter Language"
@@ -101,7 +102,7 @@ class BookForm extends React.Component {
             <Field
               name="pageNumber"
               type="number"
-              label="Page Number"
+              label="Puslapių skaičius"
               component={renderField}
               validate={required}
               placeholder="Enter Page Number"
@@ -109,7 +110,7 @@ class BookForm extends React.Component {
             />
             <Field
               name="plot"
-              label="Plot"
+              label="Aprašymas"
               component={renderFieldTextArea}
               validate={required}
               placeholder="Enter The Plot"

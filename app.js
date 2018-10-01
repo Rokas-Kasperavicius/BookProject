@@ -3,6 +3,7 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let sslRedirect = require('heroku-ssl-redirect');
 
 let app = express();
 
@@ -16,6 +17,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(sslRedirect());
 
 //CORS bypass
 app.use(function(req, res, next) {
