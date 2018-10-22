@@ -23,6 +23,12 @@
   background-color: #bc0000 !important;
 }
 
+.add_book {
+  width: 130px !important;
+  float: right !important;
+  position: absolute !important;
+}
+
 .guest-form {
   text-align: center;
   margin-top: 100px !important;

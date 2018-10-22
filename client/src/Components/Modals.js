@@ -13,6 +13,9 @@ class Modals extends React.Component {
     >
       <Modal.Header>{props.title}</Modal.Header>
       <Modal.Content className="modal-content">
+        <div>
+          Add book form...
+        </div>
         <Button content="Cancel" onClick={onClose} />
         <Button content={props.content} onClick={props.onFunction} />
       </Modal.Content>

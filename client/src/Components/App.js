@@ -16,7 +16,7 @@ class App extends React.Component {
   render () {
     return (
       <Switch>
-        { NotificationManager.listNotify = [] }
+        {/*{ NotificationManager.listNotify = [] }*/}
         <PrivateRouter exact path='/' layout={UserLayout} component={Main} history={this.props.history} location={this.props.location}/>
         <PrivateRouter exact path='/account-settings' layout={UserLayout} component={AccountSettings} history={this.props.history} location={this.props.location}/>
         <Router exact path='/login' layout={GuestLayout} component={Login}/>

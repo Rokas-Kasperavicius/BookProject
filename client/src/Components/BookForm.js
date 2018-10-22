@@ -22,14 +22,14 @@ class BookForm extends React.Component {
         title: '',
         content: '',
         onFunction: undefined,
-        open: false,
+        open: false
       }
     }
   }
 
   componentWillMount() {
     this.setState({
-      book: this.props.formValues,
+      book: this.props.formValues
     })
   }
 
@@ -55,15 +55,19 @@ class BookForm extends React.Component {
       open: true,
       content: content,
       title: title,
-      onFunction: onFunction,
+      onFunction: onFunction
     };
 
-    this.setState({ modalProps: newModalProps })
+    this.setState({
+      modalProps: newModalProps
+    })
   };
 
   onModalClose = () => {
     this.setState({
-     modalProps: { open: false }
+     modalProps: {
+       open: false
+     }
     })
   };
 
@@ -156,7 +160,7 @@ const mapStateToProps = (state, props) => ({
 
 const formConfig = {
   form: 'book-form',
-  enableReinitialize: true,
+  enableReinitialize: true
 };
 
 export default withRouter(connect(mapStateToProps)(reduxForm(formConfig)(BookForm)));
